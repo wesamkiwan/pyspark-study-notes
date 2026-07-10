@@ -216,3 +216,15 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Claude Code local tool settings (machine-specific, not project content)
+.claude/
+
+# Spark / PySpark runtime artifacts
+spark-warehouse/
+metastore_db/
+derby.log
+checkpoints/
+*.crc
+_SUCCESS
+.ipynb_checkpoints/

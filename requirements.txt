@@ -1,0 +1,6 @@
+# Pinned so the local venv matches what's been tested for this course.
+# Use Python 3.9-3.11 — see 00-setup/README.md for a confirmed Python 3.12 worker-crash
+# issue with this PySpark version on Windows.
+pyspark==3.5.3
+pytest==9.1.1
+chispa==0.12.0

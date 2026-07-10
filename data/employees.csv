@@ -1,0 +1,16 @@
+emp_id,name,department,salary,hire_date,manager_id
+1,Alice Chen,Engineering,125000,2019-03-14,
+2,Bob Okafor,Engineering,98000,2020-07-01,1
+3,Carol Nunez,Engineering,101000,2021-01-11,1
+4,David Kim,Sales,72000,2018-05-23,
+5,Elena Petrova,Sales,68000,2022-02-15,4
+6,Farid Haidari,Sales,75000,2021-09-09,4
+7,Grace Lin,Marketing,64000,2020-11-30,
+8,Hassan Ali,Marketing,61000,2022-06-18,7
+9,Ines Moreau,Engineering,133000,2017-08-04,1
+10,Jamal Smith,Engineering,89000,2023-01-09,1
+11,Katya Ivanova,Sales,70000,2019-12-01,4
+12,Liam O'Brien,Marketing,59000,2023-04-22,7
+13,Mona Farouk,Engineering,,2023-11-01,1
+14,Noah Bergstrom,Finance,88000,2016-06-06,
+15,Olivia Tran,Finance,85000,2021-03-17,14
