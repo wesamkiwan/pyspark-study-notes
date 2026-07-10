@@ -1,0 +1,8 @@
+{"emp_id": 1, "name": "Alice Chen", "department": "Engineering", "salary": 125000, "hire_date": "2019-03-14", "manager_id": null}
+{"emp_id": 2, "name": "Bob Okafor", "department": "Engineering", "salary": 98000, "hire_date": "2020-07-01", "manager_id": 1}
+{"emp_id": 3, "name": "Carol Nunez", "department": "Engineering", "salary": 101000, "hire_date": "2021-01-11", "manager_id": 1}
+{"emp_id": 4, "name": "David Kim", "department": "Sales", "salary": 72000, "hire_date": "2018-05-23", "manager_id": null}
+{"emp_id": 5, "name": "Elena Petrova", "department": "Sales", "salary": 68000, "hire_date": "2022-02-15", "manager_id": 4}
+{"emp_id": 6, "name": "Farid Haidari", "department": "Sales", "salary": 75000, "hire_date": "2021-09-09", "manager_id": 4}
+{"emp_id": 7, "name": "Grace Lin", "department": "Marketing", "salary": 64000, "hire_date": "2020-11-30", "manager_id": null}
+{"emp_id": 8, "name": "Hassan Ali", "department": "Marketing", "salary": 61000, "hire_date": "2022-06-18", "manager_id": 7}

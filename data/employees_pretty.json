@@ -1,0 +1,26 @@
+[
+  {
+    "emp_id": 1,
+    "name": "Alice Chen",
+    "department": "Engineering",
+    "salary": 125000,
+    "hire_date": "2019-03-14",
+    "manager_id": null
+  },
+  {
+    "emp_id": 2,
+    "name": "Bob Okafor",
+    "department": "Engineering",
+    "salary": 98000,
+    "hire_date": "2020-07-01",
+    "manager_id": 1
+  },
+  {
+    "emp_id": 3,
+    "name": "Carol Nunez",
+    "department": "Engineering",
+    "salary": 101000,
+    "hire_date": "2021-01-11",
+    "manager_id": 1
+  }
+]

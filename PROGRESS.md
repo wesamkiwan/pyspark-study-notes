@@ -21,7 +21,14 @@ GitHub renders these as interactive-looking checkboxes on the repo page.
 - [ ] Quiz: scored honestly, reviewed wrong answers
 
 ## Module 02 — Reading, Writing & Schemas
-- [ ] _(module not built yet)_
+- [ ] Lesson 1: Why explicit schemas (the ZIP-code inferSchema bug)
+- [ ] Lesson 2: File formats deep dive (CSV/JSON/Parquet/ORC/Avro)
+- [ ] Lesson 3: Reading data like a pro (parse modes, the `.count()` gotcha)
+- [ ] Lesson 4: Writing data like a pro (write modes, partitioning, file count control)
+- [ ] Lesson 5: Schema evolution and mismatches (`mergeSchema`)
+- [ ] Exercise 1 completed (attempted before checking solution)
+- [ ] Exercise 2 completed (attempted before checking solution)
+- [ ] Quiz: scored honestly, reviewed wrong answers
 
 ## Module 03 — Core DataFrame Transformations
 - [ ] _(module not built yet)_
@@ -66,4 +73,4 @@ GitHub renders these as interactive-looking checkboxes on the repo page.
 - [ ] _(module not built yet)_
 
 ---
-*Last updated: 2026-07-10 — Modules 00–01 built.*
+*Last updated: 2026-07-10 — Modules 00–02 built.*

@@ -1,0 +1,9 @@
+order_id,emp_id,product,category,amount,order_date,region
+1001,4,Widget A,Hardware,250.00,2023-01-05,West
+1002,4,Widget B,Hardware,410.50,2023-01-19,West
+1003,5,Widget A,Hardware,not_a_number,2023-02-02,East
+1004,6,Gadget X,Electronics,899.99,2023-02-11,West
+1005,11,Widget C,Hardware,150.75,2023-03-01
+1006,5,Gadget Y,Electronics,1200.00,2023-03-14,East
+1007,4,Widget A,Hardware,250.00,2023-04-02,West,UNEXPECTED_EXTRA_FIELD
+1008,6,Widget B,Hardware,410.50,2023-04-19,West

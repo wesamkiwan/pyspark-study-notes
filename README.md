@@ -40,7 +40,7 @@ so you can recognize and use those setups too — production teams use all three
 |---|--------|----------------------|
 | 00 | [Setup & Environment](00-setup/) | Run PySpark locally, in Docker, or on Databricks |
 | 01 | [Fundamentals & Architecture](01-fundamentals/) | Explain driver/executor model, DAGs, lazy evaluation, RDD vs DataFrame |
-| 02 | Reading, Writing & Schemas | Handle CSV/JSON/Parquet/ORC/Avro/JDBC, enforce schemas, avoid schema inference traps |
+| 02 | [Reading, Writing & Schemas](02-io-and-schemas/) | Handle CSV/JSON/Parquet/ORC/Avro, enforce schemas, avoid schema inference traps, handle malformed data and schema drift deliberately |
 | 03 | Core DataFrame Transformations | select/filter/withColumn/groupBy/agg fluently, know when to use SQL instead |
 | 04 | Spark SQL | Mix SQL and DataFrame API, use the Catalog, write maintainable SQL pipelines |
 | 05 | Joins Deep Dive | Pick the right join strategy, diagnose and fix data skew, broadcast correctly |
@@ -56,7 +56,7 @@ so you can recognize and use those setups too — production teams use all three
 | 15 | Capstone Projects | Build 3 progressively harder real-world pipelines end-to-end |
 | 16 | Interview Prep & Cheat Sheets | Answer the questions that actually get asked, fast reference sheets |
 
-Modules 00–01 are built now. We'll build the rest together, module by module — tell me when
+Modules 00–02 are built now. We'll build the rest together, module by module — tell me when
 you're ready to continue and we'll keep going (or jump ahead if you already know a topic).
 
 ## Repo Structure
