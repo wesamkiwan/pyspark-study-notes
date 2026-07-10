@@ -1,14 +1,20 @@
 # Dot-source this once per PowerShell session before running any course code:
 #   . .\00-setup\set_env.ps1
 #
-# These exact values were verified working on this machine while building the course
-# (see 00-setup/README.md "Windows gotchas" for why each one is needed). If you're on a
-# different machine, install a JDK per the README and update JAVA_HOME/HADOOP_HOME below.
+# This file is a generic template — safe to commit, contains no machine-specific paths.
+# Your actual JAVA_HOME/HADOOP_HOME values go in 00-setup/set_env.local.ps1, which is
+# gitignored, so your local machine's usernames/paths never get committed to this
+# (public) repo. First run: copy set_env.local.ps1.example to set_env.local.ps1 and
+# fill in your real paths (see 00-setup/README.md for how to obtain a JDK/winutils).
 
-$env:JAVA_HOME = "C:\Users\wesam\tools\jdk-17.0.19+10"
-$env:HADOOP_HOME = "C:\Users\wesam\tools\hadoop-3.3.4"
-$env:PATH = "$env:HADOOP_HOME\bin;$env:PATH"
+$localOverride = Join-Path $PSScriptRoot "set_env.local.ps1"
 
-Write-Host "JAVA_HOME -> $env:JAVA_HOME"
-Write-Host "HADOOP_HOME -> $env:HADOOP_HOME"
-Write-Host "Now activate your venv, e.g.: C:\venvs\pyspark-course\Scripts\Activate.ps1"
+if (Test-Path $localOverride) {
+    . $localOverride
+    Write-Host "JAVA_HOME -> $env:JAVA_HOME"
+    Write-Host "HADOOP_HOME -> $env:HADOOP_HOME"
+    Write-Host "Now activate your venv, e.g.: C:\venvs\pyspark-course\Scripts\Activate.ps1"
+} else {
+    Write-Host "No 00-setup/set_env.local.ps1 found."
+    Write-Host "Copy 00-setup/set_env.local.ps1.example to 00-setup/set_env.local.ps1 and fill in your paths."
+}

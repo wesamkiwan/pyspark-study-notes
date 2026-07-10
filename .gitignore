@@ -220,6 +220,9 @@ __marimo__/
 # Claude Code local tool settings (machine-specific, not project content)
 .claude/
 
+# Local machine-specific env paths (usernames/paths) — never commit these
+00-setup/set_env.local.ps1
+
 # Spark / PySpark runtime artifacts
 spark-warehouse/
 metastore_db/

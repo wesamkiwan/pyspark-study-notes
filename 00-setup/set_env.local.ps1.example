@@ -1,0 +1,7 @@
+# Copy this file to set_env.local.ps1 (same folder) and fill in YOUR real paths.
+# set_env.local.ps1 is gitignored — it will never be committed, so your local
+# machine's usernames/paths stay off this public repo.
+
+$env:JAVA_HOME = "C:\path\to\your\jdk"
+$env:HADOOP_HOME = "C:\path\to\your\hadoop-winutils-folder"
+$env:PATH = "$env:HADOOP_HOME\bin;$env:PATH"
