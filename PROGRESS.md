@@ -31,7 +31,14 @@ GitHub renders these as interactive-looking checkboxes on the repo page.
 - [ ] Quiz: scored honestly, reviewed wrong answers
 
 ## Module 03 — Core DataFrame Transformations
-- [ ] _(module not built yet)_
+- [ ] Lesson 1: Selecting and creating columns (select, withColumn, col() vs lit())
+- [ ] Lesson 2: Filtering and conditional logic (operator precedence, when/otherwise, nulls)
+- [ ] Lesson 3: Grouping and aggregating (groupBy/agg, aliasing, filtering aggregates)
+- [ ] Lesson 4: Sorting, deduplication, and combining DataFrames (the union column-order trap)
+- [ ] Lesson 5: DataFrame API vs Spark SQL (when to use which, injection safety, temp view scope)
+- [ ] Exercise 1 completed (attempted before checking solution)
+- [ ] Exercise 2 completed (attempted before checking solution)
+- [ ] Quiz: scored honestly, reviewed wrong answers
 
 ## Module 04 — Spark SQL
 - [ ] _(module not built yet)_
@@ -73,4 +80,4 @@ GitHub renders these as interactive-looking checkboxes on the repo page.
 - [ ] _(module not built yet)_
 
 ---
-*Last updated: 2026-07-10 — Modules 00–02 built.*
+*Last updated: 2026-07-13 — Modules 00–03 built.*
