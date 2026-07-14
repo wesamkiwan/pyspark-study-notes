@@ -71,7 +71,14 @@ GitHub renders these as interactive-looking checkboxes on the repo page.
 - [ ] Quiz: scored honestly, reviewed wrong answers
 
 ## Module 07 — Window Functions
-- [ ] _(module not built yet)_
+- [ ] Lesson 1: Ranking functions (row_number/rank/dense_rank) and the tiebreaker trap
+- [ ] Lesson 2: Aggregate window functions — running totals with rowsBetween
+- [ ] Lesson 3: lag/lead for period-over-period comparisons and gap analysis
+- [ ] Lesson 4: rowsBetween vs the default RANGE frame — verified running-total trap
+- [ ] Lesson 5: Top-N per group, and the no-partitionBy single-partition performance trap
+- [ ] Exercise 1 completed (attempted before checking solution)
+- [ ] Exercise 2 completed (attempted before checking solution)
+- [ ] Quiz: scored honestly, reviewed wrong answers
 
 ## Module 08 — UDFs & Pandas UDFs
 - [ ] _(module not built yet)_
@@ -101,4 +108,4 @@ GitHub renders these as interactive-looking checkboxes on the repo page.
 - [ ] _(module not built yet)_
 
 ---
-*Last updated: 2026-07-14 — Modules 00–06 built.*
+*Last updated: 2026-07-14 — Modules 00–07 built.*

@@ -45,7 +45,7 @@ so you can recognize and use those setups too — production teams use all three
 | 04 | [Spark SQL](04-spark-sql/) | Mix SQL and DataFrame API, use the Catalog, write maintainable SQL pipelines |
 | 05 | [Joins Deep Dive](05-joins-deep-dive/) | Pick the right join strategy, diagnose and fix data skew, broadcast correctly |
 | 06 | [Partitioning & Shuffling](06-partitioning-and-shuffling/) | Control data layout, avoid shuffle disasters, use AQE |
-| 07 | Window Functions | Solve ranking/running-total/gap-analysis problems the "Spark way" |
+| 07 | [Window Functions](07-window-functions/) | Solve ranking/running-total/gap-analysis problems the "Spark way" |
 | 08 | UDFs & Pandas UDFs | Know when a UDF is the wrong answer, write vectorized Pandas UDFs when it's right |
 | 09 | Performance Tuning | Read a query plan, use `.explain()`, caching/persistence, Spark configs that matter |
 | 10 | Structured Streaming | Build a streaming pipeline with watermarks, triggers, checkpointing |
@@ -56,7 +56,7 @@ so you can recognize and use those setups too — production teams use all three
 | 15 | Capstone Projects | Build 3 progressively harder real-world pipelines end-to-end |
 | 16 | Interview Prep & Cheat Sheets | Answer the questions that actually get asked, fast reference sheets |
 
-Modules 00–06 are built now. We'll build the rest together, module by module — tell me when
+Modules 00–07 are built now. We'll build the rest together, module by module — tell me when
 you're ready to continue and we'll keep going (or jump ahead if you already know a topic).
 
 ## Repo Structure
@@ -72,8 +72,8 @@ pyspark-study-notes/
 │   ├── 01-...md .. 05-...md    <- lessons, read in order
 │   ├── exercises/               <- do these yourself first
 │   └── solutions/                <- check after you've tried
-├── 02.../ ... 06.../             <- same pattern
-└── 07.../ ...                    <- future modules, same pattern
+├── 02.../ ... 07.../             <- same pattern
+└── 08.../ ...                    <- future modules, same pattern
 ```
 
 ## Quick Start
