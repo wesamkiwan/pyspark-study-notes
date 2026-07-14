@@ -61,7 +61,14 @@ GitHub renders these as interactive-looking checkboxes on the repo page.
 - [ ] Quiz: scored honestly, reviewed wrong answers
 
 ## Module 06 — Partitioning & Shuffling
-- [ ] _(module not built yet)_
+- [ ] Lesson 1: Partitions 101 (getNumPartitions, maxPartitionBytes, defaultParallelism)
+- [ ] Lesson 2: repartition(n, col) hash partitioning, key colocation, over-partitioning cost
+- [ ] Lesson 3: spark.sql.shuffle.partitions — the 200 default trap, verified on 15 rows
+- [ ] Lesson 4: AQE automatic partition coalescing (AQEShuffleRead coalesced)
+- [ ] Lesson 5: Data skew detection and salting, with verified before/after partition sizes
+- [ ] Exercise 1 completed (attempted before checking solution)
+- [ ] Exercise 2 completed (attempted before checking solution)
+- [ ] Quiz: scored honestly, reviewed wrong answers
 
 ## Module 07 — Window Functions
 - [ ] _(module not built yet)_
@@ -94,4 +101,4 @@ GitHub renders these as interactive-looking checkboxes on the repo page.
 - [ ] _(module not built yet)_
 
 ---
-*Last updated: 2026-07-14 — Modules 00–05 built.*
+*Last updated: 2026-07-14 — Modules 00–06 built.*
