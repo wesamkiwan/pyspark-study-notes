@@ -41,7 +41,14 @@ GitHub renders these as interactive-looking checkboxes on the repo page.
 - [ ] Quiz: scored honestly, reviewed wrong answers
 
 ## Module 04 — Spark SQL
-- [ ] _(module not built yet)_
+- [ ] Lesson 1: Parameterized SQL (args=) — the injection-safe way to build dynamic queries
+- [ ] Lesson 2: CTEs, subqueries (EXISTS), and the UNION vs UNION ALL dedup trap
+- [ ] Lesson 3: NULL and three-valued logic (NOT, NOT IN + NULL trap, COALESCE/NULLIF)
+- [ ] Lesson 4: expr()/selectExpr(), CASE WHEN, and the silent-NULL CAST gotcha
+- [ ] Lesson 5: Catalog API — temp views vs managed vs external tables, DROP TABLE data-loss trap
+- [ ] Exercise 1 completed (attempted before checking solution)
+- [ ] Exercise 2 completed (attempted before checking solution)
+- [ ] Quiz: scored honestly, reviewed wrong answers
 
 ## Module 05 — Joins Deep Dive
 - [ ] _(module not built yet)_
@@ -80,4 +87,4 @@ GitHub renders these as interactive-looking checkboxes on the repo page.
 - [ ] _(module not built yet)_
 
 ---
-*Last updated: 2026-07-13 — Modules 00–03 built.*
+*Last updated: 2026-07-14 — Modules 00–04 built.*
