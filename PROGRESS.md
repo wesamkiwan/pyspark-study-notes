@@ -51,7 +51,14 @@ GitHub renders these as interactive-looking checkboxes on the repo page.
 - [ ] Quiz: scored honestly, reviewed wrong answers
 
 ## Module 05 — Joins Deep Dive
-- [ ] _(module not built yet)_
+- [ ] Lesson 1: The six join types (inner/left/right/full/left_semi/left_anti)
+- [ ] Lesson 2: The duplicate-column trap (on="col" vs a join condition, AMBIGUOUS_REFERENCE)
+- [ ] Lesson 3: Broadcast vs sort-merge joins, reading .explain(), autoBroadcastJoinThreshold
+- [ ] Lesson 4: Data skew and Adaptive Query Execution's skew-join handling
+- [ ] Lesson 5: NULL join keys never match, and the accidental cartesian product default
+- [ ] Exercise 1 completed (attempted before checking solution)
+- [ ] Exercise 2 completed (attempted before checking solution)
+- [ ] Quiz: scored honestly, reviewed wrong answers
 
 ## Module 06 — Partitioning & Shuffling
 - [ ] _(module not built yet)_
@@ -87,4 +94,4 @@ GitHub renders these as interactive-looking checkboxes on the repo page.
 - [ ] _(module not built yet)_
 
 ---
-*Last updated: 2026-07-14 — Modules 00–04 built.*
+*Last updated: 2026-07-14 — Modules 00–05 built.*
