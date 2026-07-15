@@ -30,4 +30,4 @@ into this module — the specific totals, counts, and top-employee/region result
 real numbers from the shared course fixtures, not illustrative placeholders.
 
 ---
-**Next:** [Module 16 — Interview Prep & Cheat Sheets](../16-interview-prep-and-cheat-sheets/) *(not yet built)*
+**Next:** [Module 16 — Interview Prep & Cheat Sheets](../16-interview-prep-and-cheat-sheets/)

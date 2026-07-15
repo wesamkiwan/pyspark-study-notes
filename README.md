@@ -54,10 +54,11 @@ so you can recognize and use those setups too — production teams use all three
 | 13 | [Testing PySpark Code](13-testing-pyspark-code/) | Unit-test transformations with pytest + chispa, structure testable pipelines |
 | 14 | [Production & Deployment](14-production-and-deployment/) | spark-submit, cluster sizing, Databricks Jobs/EMR, orchestration with Airflow |
 | 15 | [Capstone Projects](15-capstone-projects/) | Build 3 progressively harder real-world pipelines end-to-end |
-| 16 | Interview Prep & Cheat Sheets | Answer the questions that actually get asked, fast reference sheets |
+| 16 | [Interview Prep & Cheat Sheets](16-interview-prep-and-cheat-sheets/) | Answer the questions that actually get asked, fast reference sheets |
 
-Modules 00–15 are built now. We'll build the rest together, module by module — tell me when
-you're ready to continue and we'll keep going (or jump ahead if you already know a topic).
+**All 17 modules (00–16) are built.** The full zero-to-hero roadmap is complete — work through it
+in order, or jump to whatever topic you need. Module 16's cheat sheets and gotchas list are a good
+place to return to for review once you've been through the rest.
 
 ## Repo Structure
 
@@ -72,8 +73,9 @@ pyspark-study-notes/
 │   ├── 01-...md .. 05-...md    <- lessons, read in order
 │   ├── exercises/               <- do these yourself first
 │   └── solutions/                <- check after you've tried
-├── 02.../ ... 09.../             <- same pattern
-└── 10.../ ...                    <- future modules, same pattern
+├── 02.../ ... 14.../             <- same pattern
+├── 15-capstone-projects/          <- 3 end-to-end projects, no numbered lessons
+└── 16-interview-prep-and-cheat-sheets/  <- cheat sheets, gotchas list, interview Q&A
 ```
 
 ## Quick Start

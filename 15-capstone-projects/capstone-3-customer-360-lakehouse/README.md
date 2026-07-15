@@ -51,4 +51,4 @@ Don't peek at `solution.py` until you've made a genuine attempt at both.
 
 ---
 Read [Module 15's README](../README.md) again for the full picture, then move on to
-[Module 16 — Interview Prep & Cheat Sheets](../../16-interview-prep-and-cheat-sheets/) once it's built.
+[Module 16 — Interview Prep & Cheat Sheets](../../16-interview-prep-and-cheat-sheets/).

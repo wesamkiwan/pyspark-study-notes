@@ -157,7 +157,9 @@ GitHub renders these as interactive-looking checkboxes on the repo page.
 - [ ] Quiz: scored honestly, reviewed wrong answers
 
 ## Module 16 — Interview Prep & Cheat Sheets
-- [ ] _(module not built yet)_
+- [ ] Read the quick reference cheat sheets
+- [ ] Read the verified gotchas master list end to end
+- [ ] Worked through the interview questions (fundamentals -> system-design-style)
 
 ---
-*Last updated: 2026-07-15 — Modules 00–15 built.*
+*Last updated: 2026-07-15 — All modules 00–16 built. Course complete.*
