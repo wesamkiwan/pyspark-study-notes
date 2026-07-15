@@ -141,7 +141,14 @@ GitHub renders these as interactive-looking checkboxes on the repo page.
 - [ ] Quiz: scored honestly, reviewed wrong answers
 
 ## Module 14 — Production & Deployment
-- [ ] _(module not built yet)_
+- [ ] Lesson 1: spark-submit deep dive (verified --conf and --py-files)
+- [ ] Lesson 2: Cluster sizing (worked executor/core/memory methodology)
+- [ ] Lesson 3: Databricks Jobs, EMR, and standalone clusters (conceptual comparison)
+- [ ] Lesson 4: Orchestration with Airflow (verified retry/backoff timing pattern)
+- [ ] Lesson 5: A production readiness checklist (synthesis across the whole course)
+- [ ] Exercise 1 completed (attempted before checking solution)
+- [ ] Exercise 2 completed (attempted before checking solution)
+- [ ] Quiz: scored honestly, reviewed wrong answers
 
 ## Module 15 — Capstone Projects
 - [ ] _(module not built yet)_
@@ -150,4 +157,4 @@ GitHub renders these as interactive-looking checkboxes on the repo page.
 - [ ] _(module not built yet)_
 
 ---
-*Last updated: 2026-07-15 — Modules 00–13 built.*
+*Last updated: 2026-07-15 — Modules 00–14 built.*

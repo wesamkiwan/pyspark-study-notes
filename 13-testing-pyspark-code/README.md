@@ -40,4 +40,4 @@ local Windows venv — including running the actual test suites with `pytest`, n
 described behavior.
 
 ---
-**Next:** [Module 14 — Production & Deployment](../14-production-and-deployment/) *(not yet built)*
+**Next:** [Module 14 — Production & Deployment](../14-production-and-deployment/)
