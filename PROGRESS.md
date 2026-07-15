@@ -101,7 +101,14 @@ GitHub renders these as interactive-looking checkboxes on the repo page.
 - [ ] Quiz: scored honestly, reviewed wrong answers
 
 ## Module 10 — Structured Streaming
-- [ ] _(module not built yet)_
+- [ ] Lesson 1: The Structured Streaming mental model (unbounded table, streaming CSV header gotcha)
+- [ ] Lesson 2: Triggers, verified (default, processingTime, availableNow)
+- [ ] Lesson 3: Watermarks and windowed aggregations (verified late-data accept vs silent drop)
+- [ ] Lesson 4: Checkpointing and fault tolerance (verified across two separate processes/JVMs)
+- [ ] Lesson 5: foreachBatch and the debugging workflow (verified uncached-action recompute bug)
+- [ ] Exercise 1 completed (attempted before checking solution)
+- [ ] Exercise 2 completed (attempted before checking solution)
+- [ ] Quiz: scored honestly, reviewed wrong answers
 
 ## Module 11 — Delta Lake / Lakehouse
 - [ ] _(module not built yet)_
@@ -122,4 +129,4 @@ GitHub renders these as interactive-looking checkboxes on the repo page.
 - [ ] _(module not built yet)_
 
 ---
-*Last updated: 2026-07-15 — Modules 00–09 built.*
+*Last updated: 2026-07-15 — Modules 00–10 built.*

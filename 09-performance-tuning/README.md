@@ -42,4 +42,4 @@ run against PySpark 3.5.3 with Adaptive Query Execution enabled (the 3.5.3 defau
 is hypothetical, including the specific byte thresholds and partition counts.
 
 ---
-**Next:** [Module 10 — Structured Streaming](../10-structured-streaming/) *(not yet built)*
+**Next:** [Module 10 — Structured Streaming](../10-structured-streaming/)
