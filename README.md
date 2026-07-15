@@ -49,14 +49,14 @@ so you can recognize and use those setups too — production teams use all three
 | 08 | [UDFs & Pandas UDFs](08-udfs-and-pandas-udfs/) | Know when a UDF is the wrong answer, write vectorized Pandas UDFs when it's right |
 | 09 | [Performance Tuning](09-performance-tuning/) | Read a query plan, use `.explain()`, caching/persistence, Spark configs that matter |
 | 10 | [Structured Streaming](10-structured-streaming/) | Build a streaming pipeline with watermarks, triggers, checkpointing |
-| 11 | Delta Lake / Lakehouse | ACID tables, time travel, MERGE, OPTIMIZE/VACUUM, medallion architecture |
+| 11 | [Delta Lake / Lakehouse](11-delta-lake/) | ACID tables, time travel, MERGE, OPTIMIZE/VACUUM, medallion architecture |
 | 12 | Data Engineering Patterns | Idempotent pipelines, SCD types, data quality gates, error handling at scale |
 | 13 | Testing PySpark Code | Unit-test transformations with pytest + chispa, structure testable pipelines |
 | 14 | Production & Deployment | spark-submit, cluster sizing, Databricks Jobs/EMR, orchestration with Airflow |
 | 15 | Capstone Projects | Build 3 progressively harder real-world pipelines end-to-end |
 | 16 | Interview Prep & Cheat Sheets | Answer the questions that actually get asked, fast reference sheets |
 
-Modules 00–10 are built now. We'll build the rest together, module by module — tell me when
+Modules 00–11 are built now. We'll build the rest together, module by module — tell me when
 you're ready to continue and we'll keep going (or jump ahead if you already know a topic).
 
 ## Repo Structure

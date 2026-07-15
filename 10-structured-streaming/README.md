@@ -53,4 +53,4 @@ timestamps, and metric values.
 > the `readStream.format(...)` call and its options would differ.
 
 ---
-**Next:** [Module 11 — Delta Lake / Lakehouse](../11-delta-lake/) *(not yet built)*
+**Next:** [Module 11 — Delta Lake / Lakehouse](../11-delta-lake/)

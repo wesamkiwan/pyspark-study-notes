@@ -111,7 +111,14 @@ GitHub renders these as interactive-looking checkboxes on the repo page.
 - [ ] Quiz: scored honestly, reviewed wrong answers
 
 ## Module 11 — Delta Lake / Lakehouse
-- [ ] _(module not built yet)_
+- [ ] Lesson 1: ACID tables and time travel (verified versionAsOf, transaction log history)
+- [ ] Lesson 2: MERGE and upserts (verified upsert + append+mergeSchema duplicate-row trap)
+- [ ] Lesson 3: OPTIMIZE and VACUUM (verified file counts before/after, retention safety check)
+- [ ] Lesson 4: Concurrency, RESTORE, and constraints (verified real concurrent-write conflict)
+- [ ] Lesson 5: Medallion architecture (verified bronze/silver/gold pipeline on orders.csv)
+- [ ] Exercise 1 completed (attempted before checking solution)
+- [ ] Exercise 2 completed (attempted before checking solution)
+- [ ] Quiz: scored honestly, reviewed wrong answers
 
 ## Module 12 — Data Engineering Patterns
 - [ ] _(module not built yet)_
@@ -129,4 +136,4 @@ GitHub renders these as interactive-looking checkboxes on the repo page.
 - [ ] _(module not built yet)_
 
 ---
-*Last updated: 2026-07-15 — Modules 00–10 built.*
+*Last updated: 2026-07-15 — Modules 00–11 built.*

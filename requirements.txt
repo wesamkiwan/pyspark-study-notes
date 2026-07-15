@@ -9,3 +9,8 @@ chispa==0.12.0
 # Arrow-based columnar transfer between the JVM and the Python worker.
 pandas==3.0.3
 pyarrow==25.0.0
+
+# Added for Module 11 (Delta Lake) — pinned to the Delta 3.x line, which targets
+# Spark 3.5.x (Delta 4.x requires Spark 4.0). First use needs internet access to
+# resolve the Delta JARs from Maven Central via Ivy (cached under ~/.ivy2 after).
+delta-spark==3.3.0
