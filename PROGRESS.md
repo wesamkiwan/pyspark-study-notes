@@ -91,7 +91,14 @@ GitHub renders these as interactive-looking checkboxes on the repo page.
 - [ ] Quiz: scored honestly, reviewed wrong answers
 
 ## Module 09 — Performance Tuning
-- [ ] _(module not built yet)_
+- [ ] Lesson 1: Reading physical plans like a pro (explain modes, AQE final vs initial plan)
+- [ ] Lesson 2: Caching and persistence, verified (accumulator recompute-counter)
+- [ ] Lesson 3: Storage levels deep dive (verified DataFrame .cache() default level)
+- [ ] Lesson 4: Spark configs that matter (maxPartitionBytes, default.parallelism trap)
+- [ ] Lesson 5: A performance debugging workflow (Spark UI tour)
+- [ ] Exercise 1 completed (attempted before checking solution)
+- [ ] Exercise 2 completed (attempted before checking solution)
+- [ ] Quiz: scored honestly, reviewed wrong answers
 
 ## Module 10 — Structured Streaming
 - [ ] _(module not built yet)_
@@ -115,4 +122,4 @@ GitHub renders these as interactive-looking checkboxes on the repo page.
 - [ ] _(module not built yet)_
 
 ---
-*Last updated: 2026-07-15 — Modules 00–08 built.*
+*Last updated: 2026-07-15 — Modules 00–09 built.*
