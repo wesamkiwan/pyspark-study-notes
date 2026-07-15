@@ -81,7 +81,14 @@ GitHub renders these as interactive-looking checkboxes on the repo page.
 - [ ] Quiz: scored honestly, reviewed wrong answers
 
 ## Module 08 — UDFs & Pandas UDFs
-- [ ] _(module not built yet)_
+- [ ] Lesson 1: Why UDFs are a last resort (BatchEvalPython vs codegen, verified)
+- [ ] Lesson 2: Registering UDFs and the silent return-type-mismatch trap
+- [ ] Lesson 3: NULL handling inside UDFs (verified crash on real NULL salary)
+- [ ] Lesson 4: Pandas UDFs and Arrow (ArrowEvalPython, verified timing numbers)
+- [ ] Lesson 5: applyInPandas and the built-in > Pandas UDF > UDF decision tree
+- [ ] Exercise 1 completed (attempted before checking solution)
+- [ ] Exercise 2 completed (attempted before checking solution)
+- [ ] Quiz: scored honestly, reviewed wrong answers
 
 ## Module 09 — Performance Tuning
 - [ ] _(module not built yet)_
@@ -108,4 +115,4 @@ GitHub renders these as interactive-looking checkboxes on the repo page.
 - [ ] _(module not built yet)_
 
 ---
-*Last updated: 2026-07-14 — Modules 00–07 built.*
+*Last updated: 2026-07-15 — Modules 00–08 built.*

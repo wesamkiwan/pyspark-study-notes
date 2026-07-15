@@ -4,3 +4,8 @@
 pyspark==3.5.3
 pytest==9.1.1
 chispa==0.12.0
+
+# Added for Module 08 (Pandas UDFs) — pandas_udf/applyInPandas need pyarrow for
+# Arrow-based columnar transfer between the JVM and the Python worker.
+pandas==3.0.3
+pyarrow==25.0.0
