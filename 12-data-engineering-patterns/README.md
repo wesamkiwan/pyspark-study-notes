@@ -36,4 +36,4 @@ awkward to implement correctly on plain Parquet. Every code example and output i
 run against PySpark 3.5.3 + `delta-spark==3.3.0` on the local Windows venv.
 
 ---
-**Next:** [Module 13 — Testing PySpark Code](../13-testing-pyspark-code/) *(not yet built)*
+**Next:** [Module 13 — Testing PySpark Code](../13-testing-pyspark-code/)
