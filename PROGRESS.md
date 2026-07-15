@@ -121,7 +121,14 @@ GitHub renders these as interactive-looking checkboxes on the repo page.
 - [ ] Quiz: scored honestly, reviewed wrong answers
 
 ## Module 12 — Data Engineering Patterns
-- [ ] _(module not built yet)_
+- [ ] Lesson 1: Idempotent pipelines (verified append-doubles vs replaceWhere stays-same)
+- [ ] Lesson 2: Slow Changing Dimensions / SCD Type 2 (verified full history via MERGE)
+- [ ] Lesson 3: Data quality gates (verified raise-before-write, bad batch never lands)
+- [ ] Lesson 4: Error handling and dead letters at scale (verified two corrupt-record failure shapes)
+- [ ] Lesson 5: Putting it together (verified combined pipeline stays idempotent on retry)
+- [ ] Exercise 1 completed (attempted before checking solution)
+- [ ] Exercise 2 completed (attempted before checking solution)
+- [ ] Quiz: scored honestly, reviewed wrong answers
 
 ## Module 13 — Testing PySpark Code
 - [ ] _(module not built yet)_
@@ -136,4 +143,4 @@ GitHub renders these as interactive-looking checkboxes on the repo page.
 - [ ] _(module not built yet)_
 
 ---
-*Last updated: 2026-07-15 — Modules 00–11 built.*
+*Last updated: 2026-07-15 — Modules 00–12 built.*

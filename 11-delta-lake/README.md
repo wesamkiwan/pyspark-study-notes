@@ -46,4 +46,4 @@ with Spark 3.5.x — Delta 4.x requires Spark 4.0) on the local Windows venv.
 > that), exactly like any other first-time dependency resolution.
 
 ---
-**Next:** [Module 12 — Data Engineering Patterns](../12-data-engineering-patterns/) *(not yet built)*
+**Next:** [Module 12 — Data Engineering Patterns](../12-data-engineering-patterns/)
