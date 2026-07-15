@@ -1,0 +1,670 @@
+<title>PySpark Field Notes</title>
+<style>
+  :root {
+    --ink: #1c2127;
+    --paper: #eeefea;
+    --raised: #f8f9f4;
+    --line: #c9ccc2;
+    --line-soft: #dddfd6;
+    --accent: #a9740f;
+    --accent-ink: #7a5109;
+    --danger: #a6472b;
+    --danger-tint: #f4e4de;
+    --mono: ui-monospace, "SF Mono", "Cascadia Code", "Consolas", "Liberation Mono", monospace;
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    --sans: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", system-ui, sans-serif;
+    color-scheme: light dark;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ink: #e9e4d6;
+      --paper: #14171b;
+      --raised: #1c2027;
+      --line: #333941;
+      --line-soft: #282d34;
+      --accent: #d9a544;
+      --accent-ink: #f0c46e;
+      --danger: #d0674a;
+      --danger-tint: #2c211d;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ink: #e9e4d6;
+    --paper: #14171b;
+    --raised: #1c2027;
+    --line: #333941;
+    --line-soft: #282d34;
+    --accent: #d9a544;
+    --accent-ink: #f0c46e;
+    --danger: #d0674a;
+    --danger-tint: #2c211d;
+  }
+  :root[data-theme="light"] {
+    --ink: #1c2127;
+    --paper: #eeefea;
+    --raised: #f8f9f4;
+    --line: #c9ccc2;
+    --line-soft: #dddfd6;
+    --accent: #a9740f;
+    --accent-ink: #7a5109;
+    --danger: #a6472b;
+    --danger-tint: #f4e4de;
+  }
+
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  ::selection { background: var(--accent); color: var(--paper); }
+
+  a { color: inherit; }
+
+  .skip-link {
+    position: absolute; left: -9999px; top: 0;
+    background: var(--accent); color: var(--paper); padding: 0.6em 1em; z-index: 100;
+  }
+  .skip-link:focus { left: 1em; top: 1em; }
+
+  /* ---------- Top bar ---------- */
+  header.topbar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--line);
+  }
+  .topbar-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0.85rem 1.5rem;
+    display: flex;
+    align-items: baseline;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+  }
+  .brand {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 1.15rem;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+  }
+  .brand .dot { color: var(--accent); }
+  nav.jump {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+    font-size: 0.78rem;
+    overflow-x: auto;
+  }
+  nav.jump a {
+    text-decoration: none;
+    padding: 0.3rem 0.65rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--ink);
+    opacity: 0.75;
+    white-space: nowrap;
+    transition: opacity 0.15s, border-color 0.15s, background 0.15s;
+  }
+  nav.jump a:hover, nav.jump a:focus-visible {
+    opacity: 1;
+    border-color: var(--accent);
+    background: var(--raised);
+    outline: none;
+  }
+
+  /* ---------- Masthead ---------- */
+  .masthead {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 2.75rem 1.5rem 1.75rem;
+  }
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent-ink);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .eyebrow::after {
+    content: "";
+    height: 1px;
+    flex: 1;
+    background: var(--line);
+  }
+  h1 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: clamp(1.9rem, 4vw, 2.6rem);
+    margin: 0.5rem 0 0.6rem;
+    text-wrap: balance;
+    letter-spacing: 0.002em;
+  }
+  .masthead p.lede {
+    max-width: 62ch;
+    color: var(--ink);
+    opacity: 0.82;
+    font-size: 0.98rem;
+  }
+  .masthead .stats {
+    display: flex;
+    gap: 1.75rem;
+    margin-top: 1.4rem;
+    flex-wrap: wrap;
+  }
+  .stat b {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    display: block;
+    line-height: 1;
+  }
+  .stat span {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    opacity: 0.65;
+  }
+
+  main {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 1.5rem 4rem;
+  }
+
+  section.block { margin-top: 3rem; scroll-margin-top: 4.5rem; }
+
+  .block-head {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    margin-bottom: 1.1rem;
+  }
+  .block-head h2 {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0;
+  }
+  .block-head .count {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--ink);
+    opacity: 0.55;
+  }
+  .block-intro {
+    max-width: 72ch;
+    opacity: 0.8;
+    font-size: 0.92rem;
+    margin: -0.4rem 0 1.3rem;
+  }
+
+  /* ---------- Reference card grid ---------- */
+  .ref-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1rem;
+  }
+  .ref-card {
+    background: var(--raised);
+    border: 1px solid var(--line-soft);
+    border-radius: 3px;
+    padding: 1.1rem 1.2rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+  }
+  .ref-card .num {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--accent-ink);
+    letter-spacing: 0.06em;
+  }
+  .ref-card h3 {
+    font-family: var(--serif);
+    font-size: 1.08rem;
+    font-weight: 600;
+    margin: 0.15rem 0 0.75rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .fact-row {
+    display: grid;
+    grid-template-columns: minmax(90px, 34%) 1fr;
+    gap: 0.6rem;
+    padding: 0.4rem 0;
+    font-size: 0.85rem;
+    border-bottom: 1px dotted var(--line-soft);
+  }
+  .fact-row:last-child { border-bottom: none; }
+  .fact-row .term {
+    font-family: var(--mono);
+    font-size: 0.76rem;
+    color: var(--ink);
+    opacity: 0.72;
+    line-height: 1.35;
+    word-break: break-word;
+  }
+  .fact-row .fact { line-height: 1.42; }
+  .fact-row .fact code {
+    font-family: var(--mono);
+    font-size: 0.82em;
+    background: color-mix(in srgb, var(--accent) 12%, transparent);
+    padding: 0.05em 0.35em;
+    border-radius: 2px;
+  }
+
+  /* ---------- Gotcha theme groups ---------- */
+  .theme-group + .theme-group { margin-top: 1.8rem; }
+  .theme-title {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--mono);
+    font-size: 0.74rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink);
+    opacity: 0.6;
+    margin-bottom: 0.7rem;
+  }
+  .theme-title b {
+    color: var(--danger);
+    opacity: 1;
+    font-style: normal;
+  }
+  .gotcha-list {
+    display: grid;
+    gap: 0.65rem;
+  }
+  .gotcha {
+    background: var(--raised);
+    border: 1px solid var(--line-soft);
+    border-left: 3px solid var(--danger);
+    border-radius: 2px;
+    padding: 0.85rem 1.1rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.4rem 1rem;
+    align-items: start;
+  }
+  .gotcha .claim {
+    font-size: 0.92rem;
+    line-height: 1.5;
+  }
+  .gotcha .claim code {
+    font-family: var(--mono);
+    font-size: 0.85em;
+    background: var(--danger-tint);
+    padding: 0.05em 0.35em;
+    border-radius: 2px;
+  }
+  .gotcha .tag {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+    color: var(--ink);
+    opacity: 0.55;
+    align-self: start;
+    padding-top: 0.15rem;
+  }
+  .gotcha .verified {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3em;
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent-ink);
+    margin-top: 0.35rem;
+  }
+  .gotcha .verified::before {
+    content: "";
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    display: inline-block;
+  }
+
+  /* ---------- Footer ---------- */
+  footer {
+    border-top: 1px solid var(--line);
+    margin-top: 3.5rem;
+    padding: 1.75rem 1.5rem 2.5rem;
+  }
+  footer .inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    font-size: 0.8rem;
+    opacity: 0.7;
+  }
+  footer .inner strong { font-family: var(--serif); opacity: 1; }
+
+  @media (max-width: 640px) {
+    .fact-row { grid-template-columns: 1fr; gap: 0.15rem; }
+    .gotcha { grid-template-columns: 1fr; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
+
+<a class="skip-link" href="#reference">Skip to content</a>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">PySpark<span class="dot">·</span>Field Notes</div>
+    <nav class="jump" aria-label="Section jump links">
+      <a href="#reference">Quick reference</a>
+      <a href="#gotchas">Verified gotchas</a>
+      <a href="#colophon">About</a>
+    </nav>
+  </div>
+</header>
+
+<div class="masthead">
+  <p class="eyebrow">Zero&nbsp;to&nbsp;Hero &middot; PySpark 3.5.3</p>
+  <h1>Everything that actually bit us, in one page.</h1>
+  <p class="lede">
+    A field-tested reference distilled from a 16-module PySpark curriculum — every fact here was
+    run against a real Spark session and checked against real output, not copied from a doc.
+    Scan the quick reference for the API surface; read the gotchas for the parts that look fine
+    and aren't.
+  </p>
+  <div class="stats">
+    <div class="stat"><b>14</b><span>modules covered</span></div>
+    <div class="stat"><b>31</b><span>verified gotchas found</span></div>
+    <div class="stat"><b>0</b><span>facts left unverified</span></div>
+  </div>
+</div>
+
+<main>
+
+  <section class="block" id="reference">
+    <div class="block-head">
+      <h2>Quick Reference</h2>
+      <span class="count">module 01 &ndash; 14</span>
+    </div>
+    <p class="block-intro">
+      One card per module, the facts worth keeping at your fingertips. Terms on the left,
+      the verified behavior on the right.
+    </p>
+
+    <div class="ref-grid">
+
+      <article class="ref-card">
+        <div class="num">Module 01</div>
+        <h3>Fundamentals &amp; Architecture</h3>
+        <div class="fact-row"><div class="term">driver / executor</div><div class="fact">Driver plans &amp; schedules; executors run tasks against partitions. In <code>local[*]</code> both collapse into one JVM, executors become threads.</div></div>
+        <div class="fact-row"><div class="term">transform vs action</div><div class="fact">Transformations (<code>.filter</code>, <code>.select</code>) are lazy, just recorded. Actions (<code>.count</code>, <code>.collect</code>) trigger real execution.</div></div>
+        <div class="fact-row"><div class="term">stage boundary</div><div class="fact">A shuffle — any wide transform (<code>groupBy</code>, <code>join</code>, <code>orderBy</code>, <code>repartition</code>).</div></div>
+        <div class="fact-row"><div class="term">why DataFrame &gt; RDD</div><div class="fact">Schema + declarative ops let Catalyst inspect and rewrite the whole plan; RDD closures are opaque to the optimizer.</div></div>
+        <div class="fact-row"><div class="term"><code>.explain()</code></div><div class="fact"><code>PushedFilters</code> = Catalyst moved your filter into the scan itself.</div></div>
+      </article>
+
+      <article class="ref-card">
+        <div class="num">Module 02</div>
+        <h3>Reading, Writing &amp; Schemas</h3>
+        <div class="fact-row"><div class="term"><code>inferSchema</code></div><div class="fact">Costs a full extra pass over the data — and a ZIP code <code>"00501"</code> silently becomes int <code>501</code>. No warning.</div></div>
+        <div class="fact-row"><div class="term">CSV vs Parquet</div><div class="fact">Parquet is columnar — can skip unread columns entirely. CSV must parse whole rows regardless.</div></div>
+        <div class="fact-row"><div class="term">multi-line JSON</div><div class="fact">Needs <code>.option("multiLine","true")</code> or every line fails to parse.</div></div>
+        <div class="fact-row"><div class="term">corrupt-record <code>.count()</code></div><div class="fact">Unreliable, verified — even after <code>.filter()</code>. Force <code>.cache()</code> before counting.</div></div>
+        <div class="fact-row"><div class="term">schema drift, no merge</div><div class="fact">Silently keeps ONE file's schema for the whole read — drops a real column from every row.</div></div>
+        <div class="fact-row"><div class="term"><code>coalesce</code> vs <code>repartition</code></div><div class="fact">Coalesce avoids a full shuffle but can't fix already-uneven partitions.</div></div>
+      </article>
+
+      <article class="ref-card">
+        <div class="num">Module 03</div>
+        <h3>Core Transformations</h3>
+        <div class="fact-row"><div class="term"><code>withColumn</code></div><div class="fact">Second arg must be a <code>Column</code> — wrap constants in <code>lit(...)</code>.</div></div>
+        <div class="fact-row"><div class="term"><code>&amp; | ~</code></div><div class="fact">Binds tighter than comparisons — every condition needs its own parens, no exceptions.</div></div>
+        <div class="fact-row"><div class="term">compare vs <code>NULL</code></div><div class="fact">Evaluates to <code>NULL</code>, not <code>False</code> — silently excluded, falls through <code>when()</code> chains to <code>.otherwise()</code>.</div></div>
+        <div class="fact-row"><div class="term"><code>.union()</code></div><div class="fact">Matches columns by <b>position</b>, not name — silent mislabeling. Use <code>unionByName()</code>.</div></div>
+        <div class="fact-row"><div class="term">temp view scope</div><div class="fact">Scoped to the creating <code>SparkSession</code> only.</div></div>
+      </article>
+
+      <article class="ref-card">
+        <div class="num">Module 04</div>
+        <h3>Spark SQL</h3>
+        <div class="fact-row"><div class="term">injection-safe SQL</div><div class="fact">Use <code>args={"x": val}</code> named params, never f-strings against untrusted input.</div></div>
+        <div class="fact-row"><div class="term"><code>UNION</code> vs <code>ALL</code></div><div class="fact">Bare SQL <code>UNION</code> dedups by default (unlike DataFrame <code>.union()</code>). Default to <code>UNION ALL</code>.</div></div>
+        <div class="fact-row"><div class="term"><code>NOT IN</code> + NULL</div><div class="fact">One <code>NULL</code> in the subquery collapses the result to zero rows for everyone. Use <code>NOT EXISTS</code>.</div></div>
+        <div class="fact-row"><div class="term"><code>CAST('x' AS DOUBLE)</code></div><div class="fact">Returns <code>NULL</code>, no error — indistinguishable from genuinely missing.</div></div>
+        <div class="fact-row"><div class="term"><code>DROP TABLE</code></div><div class="fact">Deletes files for <code>MANAGED</code> tables; leaves them for <code>EXTERNAL</code>. Check <code>DESCRIBE EXTENDED</code> first.</div></div>
+      </article>
+
+      <article class="ref-card">
+        <div class="num">Module 05</div>
+        <h3>Joins Deep Dive</h3>
+        <div class="fact-row"><div class="term"><code>LEFT SEMI</code> vs <code>INNER</code></div><div class="fact">Semi = one row per matching left row (membership check). Inner = one row per match (row-multiplying).</div></div>
+        <div class="fact-row"><div class="term">ambiguous column</div><div class="fact"><code>on="col"</code> auto-coalesces; a join <b>condition</b> keeps both sides — alias both, reference via alias.</div></div>
+        <div class="fact-row"><div class="term"><code>autoBroadcastJoinThreshold</code></div><div class="fact">Default 10MB — auto-broadcasts with zero hint. Stale size estimates risk executor OOM.</div></div>
+        <div class="fact-row"><div class="term">skew symptom</div><div class="fact">One task stays running long after every sibling in the same stage finishes.</div></div>
+        <div class="fact-row"><div class="term"><code>NULL == NULL</code> join key</div><div class="fact">Evaluates <code>NULL</code> → never matches, even two literal nulls against each other.</div></div>
+        <div class="fact-row"><div class="term">missing join condition</div><div class="fact"><code>crossJoin.enabled</code> defaults <code>true</code> — silently runs as a full cartesian product.</div></div>
+      </article>
+
+      <article class="ref-card">
+        <div class="num">Module 06</div>
+        <h3>Partitioning &amp; Shuffling</h3>
+        <div class="fact-row"><div class="term">input partitions</div><div class="fact">Governed by <code>maxPartitionBytes</code> (128MiB default) — file size &divide; threshold.</div></div>
+        <div class="fact-row"><div class="term"><code>repartition(n, col)</code></div><div class="fact">Hash-partitions — same key value always lands in the same output partition.</div></div>
+        <div class="fact-row"><div class="term"><code>shuffle.partitions</code></div><div class="fact">Defaults to <b>200</b>, fixed, unrelated to data size. Verified 200 partitions for 4 groups on 15 rows.</div></div>
+        <div class="fact-row"><div class="term">AQE coalescing</div><div class="fact">Shuffle still WRITES the configured count — AQE only merges small partitions back down on read.</div></div>
+        <div class="fact-row"><div class="term">skew detection</div><div class="fact"><code>.rdd.glom().map(len)</code> — exact per-partition row counts, not inferred from timing.</div></div>
+        <div class="fact-row"><div class="term">salting</div><div class="fact">Needs a two-stage aggregation (by salt, then by real key) to recover the correct total.</div></div>
+      </article>
+
+      <article class="ref-card">
+        <div class="num">Module 07</div>
+        <h3>Window Functions</h3>
+        <div class="fact-row"><div class="term"><code>rank()</code> vs <code>dense_rank()</code></div><div class="fact">Rank skips ahead by the tie count; dense_rank always +1. Verified on a real 3-way tie.</div></div>
+        <div class="fact-row"><div class="term"><code>row_number()</code> ties</div><div class="fact">Non-deterministic assignment without a unique tiebreaker in <code>orderBy</code>.</div></div>
+        <div class="fact-row"><div class="term">default frame</div><div class="fact"><code>RANGE</code>, not <code>ROWS</code> — tied rows get the SAME cumulative total. Silent, data-dependent bug.</div></div>
+        <div class="fact-row"><div class="term">safe running total</div><div class="fact">Always specify <code>.rowsBetween(unboundedPreceding, currentRow)</code> explicitly.</div></div>
+        <div class="fact-row"><div class="term">no <code>partitionBy</code></div><div class="fact"><code>Exchange SinglePartition</code> — every row funnels into one partition.</div></div>
+        <div class="fact-row"><div class="term">top-N per group</div><div class="fact">Use <code>row_number()</code>, not <code>rank()</code> — rank can return MORE than N on a boundary tie.</div></div>
+      </article>
+
+      <article class="ref-card">
+        <div class="num">Module 08</div>
+        <h3>UDFs &amp; Pandas UDFs</h3>
+        <div class="fact-row"><div class="term"><code>@udf(returnType=)</code></div><div class="fact">Never checked against the real return value — wrong type silently becomes <code>NULL</code> everywhere.</div></div>
+        <div class="fact-row"><div class="term"><code>.explain()</code> signature</div><div class="fact">Row UDF → <code>BatchEvalPython</code>. Pandas UDF → <code>ArrowEvalPython</code>.</div></div>
+        <div class="fact-row"><div class="term">Pandas UDF speedup</div><div class="fact">Verified modest, ~5&ndash;15% for numeric work locally — not the "10&ndash;100x" folklore figure.</div></div>
+        <div class="fact-row"><div class="term">NaN from a pandas UDF</div><div class="fact">Lands as genuine Spark <code>NULL</code> — check <code>is None</code>, not a NaN comparison.</div></div>
+      </article>
+
+      <article class="ref-card">
+        <div class="num">Module 09</div>
+        <h3>Performance Tuning</h3>
+        <div class="fact-row"><div class="term"><code>.explain()</code> timing</div><div class="fact">Before an action under AQE: <code>isFinalPlan=false</code>. After: <code>=true</code> + <code>AQEShuffleRead coalesced</code>.</div></div>
+        <div class="fact-row"><div class="term"><code>.cache()</code> default level</div><div class="fact"><code>MEMORY_AND_DISK_DESER</code>, NOT <code>MEMORY_ONLY</code> — that's the RDD API's default.</div></div>
+        <div class="fact-row"><div class="term"><code>spark.conf.get(parallelism)</code></div><div class="fact">Throws — it's a core property. Use <code>sparkContext.defaultParallelism</code>.</div></div>
+        <div class="fact-row"><div class="term"><code>maxPartitionBytes</code></div><div class="fact">Controls INPUT partitions — a distinct knob from shuffle partitions.</div></div>
+      </article>
+
+      <article class="ref-card">
+        <div class="num">Module 10</div>
+        <h3>Structured Streaming</h3>
+        <div class="fact-row"><div class="term">streaming actions</div><div class="fact"><code>.count()</code>/<code>.show()</code> raise <code>AnalysisException</code> — must <code>writeStream.start()</code>.</div></div>
+        <div class="fact-row"><div class="term"><code>Trigger.ProcessingTime</code></div><div class="fact">First batch fires immediately regardless of interval; only later batches wait the full interval.</div></div>
+        <div class="fact-row"><div class="term"><code>Trigger.AvailableNow</code></div><div class="fact">Stops ITSELF once the backlog drains — <code>isActive</code> → <code>False</code>, no <code>.stop()</code> needed.</div></div>
+        <div class="fact-row"><div class="term">watermark + late data</div><div class="fact">Within tolerance → merges into the open window. Past it → dropped silently, but still counted in <code>numInputRows</code>.</div></div>
+        <div class="fact-row"><div class="term"><code>foreachBatch</code></div><div class="fact">Multiple uncached actions on <code>batch_df</code> double real work AND the reported metric.</div></div>
+      </article>
+
+      <article class="ref-card">
+        <div class="num">Module 11</div>
+        <h3>Delta Lake / Lakehouse</h3>
+        <div class="fact-row"><div class="term">what a Delta table IS</div><div class="fact">Parquet files + <code>_delta_log/</code> — the log is what enables ACID, versioning, <code>MERGE</code>.</div></div>
+        <div class="fact-row"><div class="term"><code>append</code> + <code>mergeSchema</code></div><div class="fact">On an existing key: creates a DUPLICATE row, not an update. <code>MERGE</code> is the real upsert.</div></div>
+        <div class="fact-row"><div class="term"><code>OPTIMIZE</code> vs <code>VACUUM</code></div><div class="fact">Optimize compacts but keeps old files (16&rarr;17). Vacuum deletes them (17&rarr;1) — has a retention safety check.</div></div>
+        <div class="fact-row"><div class="term">concurrent <code>MERGE</code></div><div class="fact">Reproduced live: one thread wins, the other gets <code>ConcurrentAppendException</code>.</div></div>
+        <div class="fact-row"><div class="term"><code>RESTORE</code></div><div class="fact">Adds a NEW version — doesn't erase the one it restores from.</div></div>
+      </article>
+
+      <article class="ref-card">
+        <div class="num">Module 12</div>
+        <h3>Data Engineering Patterns</h3>
+        <div class="fact-row"><div class="term">idempotent loads</div><div class="fact">Naive <code>append</code> run twice DOUBLES rows (2&rarr;4). <code>replaceWhere</code> stays correct (2&rarr;2).</div></div>
+        <div class="fact-row"><div class="term">SCD2 trap</div><div class="fact">Changed-keys DataFrame reused after a <code>MERGE</code> finds nothing — even <code>.cache()</code> doesn't fix it. <code>.collect()</code> first.</div></div>
+        <div class="fact-row"><div class="term">quality gate design</div><div class="fact">Must RAISE before write, and check row-count volume — not just per-row validity.</div></div>
+        <div class="fact-row"><div class="term">dead-letter split</div><div class="fact">Broken JSON syntax nulls the whole row; a wrong-typed field nulls only that field. <code>_corrupt_record</code> catches both.</div></div>
+      </article>
+
+      <article class="ref-card">
+        <div class="num">Module 13</div>
+        <h3>Testing PySpark Code</h3>
+        <div class="fact-row"><div class="term">fixture scope</div><div class="fact"><code>session</code>-scoped amortizes the ~2.8s JVM startup once instead of per test.</div></div>
+        <div class="fact-row"><div class="term"><code>assert_df_equality</code></div><div class="fact">Fails by default on row order, column order, AND nullable flags — even identical data.</div></div>
+        <div class="fact-row"><div class="term">float columns</div><div class="fact"><code>0.1 + 0.2 != 0.3</code> exactly. Use <code>assert_approx_df_equality(precision=...)</code>.</div></div>
+        <div class="fact-row"><div class="term">empty-batch trap</div><div class="fact">A per-row-only quality gate trivially PASSES an empty DataFrame — add a volume check.</div></div>
+      </article>
+
+      <article class="ref-card">
+        <div class="num">Module 14</div>
+        <h3>Production &amp; Deployment</h3>
+        <div class="fact-row"><div class="term"><code>--conf</code> / <code>--py-files</code></div><div class="fact">Both verified to take real effect — configs readable inside the job, modules genuinely importable.</div></div>
+        <div class="fact-row"><div class="term">cluster sizing</div><div class="fact">~5 cores/executor is the standard sweet spot — balances GC pauses against per-JVM overhead.</div></div>
+        <div class="fact-row"><div class="term">retry safety</div><div class="fact">Airflow <code>retries</code> is only safe if the job is already idempotent — otherwise it automates the bug.</div></div>
+        <div class="fact-row"><div class="term">deploy mode</div><div class="fact"><code>cluster</code> mode survives the submitting machine disconnecting; <code>client</code> mode does not.</div></div>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="block" id="gotchas">
+    <div class="block-head">
+      <h2>Verified Gotchas</h2>
+      <span class="count">18 of 31 findings</span>
+    </div>
+    <p class="block-intro">
+      The pattern that matters more than any single line item: Spark tends to fail by silently
+      doing something plausible-but-wrong, not by raising a loud error. Grouped by how the failure
+      actually shows up.
+    </p>
+
+    <div class="theme-group">
+      <div class="theme-title"><b>01</b>&nbsp;&nbsp;Silent Wrong Answers</div>
+      <div class="gotcha-list">
+        <div class="gotcha">
+          <div class="claim">A ZIP code <code>"00501"</code> under <code>inferSchema=True</code> silently becomes int <code>501</code> — leading zeros gone, no warning.<div class="verified">Verified</div></div>
+          <div class="tag">Module 02</div>
+        </div>
+        <div class="gotcha">
+          <div class="claim">Reading multiple Parquet files with schema drift, no <code>mergeSchema</code>: Spark keeps ONE file's schema for the whole read, dropping a real column from every row.<div class="verified">Verified</div></div>
+          <div class="tag">Module 02</div>
+        </div>
+        <div class="gotcha">
+          <div class="claim"><code>append</code> + <code>mergeSchema=true</code> against an already-existing key creates a DUPLICATE row, never an update.<div class="verified">Verified</div></div>
+          <div class="tag">Module 11</div>
+        </div>
+        <div class="gotcha">
+          <div class="claim">The default window frame (no explicit <code>rowsBetween</code>) is <code>RANGE</code> — tied <code>orderBy</code> values all get the identical cumulative total instead of incrementing.<div class="verified">Verified</div></div>
+          <div class="tag">Module 07</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="theme-group">
+      <div class="theme-title"><b>02</b>&nbsp;&nbsp;Laziness &amp; Recompute Traps</div>
+      <div class="gotcha-list">
+        <div class="gotcha">
+          <div class="claim"><code>.count()</code> on a DataFrame descended from a corrupt-record read is unreliable — even after an explicit <code>.filter()</code>. Only <code>.cache()</code> before counting fixes it.<div class="verified">Verified</div></div>
+          <div class="tag">Module 02</div>
+        </div>
+        <div class="gotcha">
+          <div class="claim">Calling more than one uncached action on a <code>foreachBatch</code> batch DataFrame doubles real work AND the reported <code>numInputRows</code> — exactly 2x for 2 actions.<div class="verified">Verified</div></div>
+          <div class="tag">Module 10</div>
+        </div>
+        <div class="gotcha">
+          <div class="claim">An SCD2 "changed keys" DataFrame reused after a <code>MERGE</code> that mutates the same table silently finds zero rows — <b>even <code>.cache()</code> does not fix this</b>, Delta invalidates it on mutation. Only <code>.collect()</code> to Python data first works.<div class="verified">Verified</div></div>
+          <div class="tag">Module 12</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="theme-group">
+      <div class="theme-title"><b>03</b>&nbsp;&nbsp;Defaults That Surprise</div>
+      <div class="gotcha-list">
+        <div class="gotcha">
+          <div class="claim"><code>DataFrame.cache()</code> defaults to <code>MEMORY_AND_DISK_DESER</code>, not <code>MEMORY_ONLY</code> — that's the RDD API's default, commonly stated wrong.<div class="verified">Verified</div></div>
+          <div class="tag">Module 09</div>
+        </div>
+        <div class="gotcha">
+          <div class="claim"><code>spark.sql.shuffle.partitions</code> defaults to 200 regardless of data size — verified to produce 200 partitions for 4 groups on 15 rows.<div class="verified">Verified</div></div>
+          <div class="tag">Module 06</div>
+        </div>
+        <div class="gotcha">
+          <div class="claim">A join with no condition at all silently runs as a full cartesian product — <code>crossJoin.enabled</code> defaults <code>true</code>.<div class="verified">Verified</div></div>
+          <div class="tag">Module 05</div>
+        </div>
+        <div class="gotcha">
+          <div class="claim"><code>OPTIMIZE</code> does not delete old files (16&rarr;17, up not down) — <code>VACUUM</code> is the separate, destructive step, with its own retention safety check.<div class="verified">Verified</div></div>
+          <div class="tag">Module 11</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="theme-group">
+      <div class="theme-title"><b>04</b>&nbsp;&nbsp;Concurrency &amp; Fault Tolerance</div>
+      <div class="gotcha-list">
+        <div class="gotcha">
+          <div class="claim">Checkpoint recovery verified the strong way: two genuinely separate processes/JVMs sharing a checkpoint — zero reprocessing, zero duplicate output on restart.<div class="verified">Verified</div></div>
+          <div class="tag">Module 10</div>
+        </div>
+        <div class="gotcha">
+          <div class="claim">Two real threads racing a Delta <code>MERGE</code> against the same row reproduced a live <code>ConcurrentAppendException</code> — first committer wins, the loser is rejected outright.<div class="verified">Verified</div></div>
+          <div class="tag">Module 11</div>
+        </div>
+        <div class="gotcha">
+          <div class="claim"><code>RESTORE</code> adds a new version rather than erasing history — the version restored FROM is still present and queryable afterward.<div class="verified">Verified</div></div>
+          <div class="tag">Module 11</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="theme-group">
+      <div class="theme-title"><b>05</b>&nbsp;&nbsp;Testing-Specific Surprises</div>
+      <div class="gotcha-list">
+        <div class="gotcha">
+          <div class="claim"><code>chispa.assert_df_equality</code> fails by default on row order, column order, and nullable-flag differences — even with byte-identical data.<div class="verified">Verified</div></div>
+          <div class="tag">Module 13</div>
+        </div>
+        <div class="gotcha">
+          <div class="claim">A quality gate built only from per-row checks trivially PASSES a completely empty batch — every check is vacuously true with zero rows.<div class="verified">Verified</div></div>
+          <div class="tag">Module 12/13</div>
+        </div>
+        <div class="gotcha">
+          <div class="claim"><code>0.1 + 0.2 != 0.3</code> exactly, in real IEEE 754 floating point — any exact-equality test on computed float columns is fragile by construction.<div class="verified">Verified</div></div>
+          <div class="tag">Module 13</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="colophon">
+  <div class="inner">
+    <div><strong>PySpark Field Notes</strong> — distilled from the 16-module "Zero to Hero" course, every entry actually run against PySpark 3.5.3.</div>
+    <div>Full lessons, exercises, and 31/31 verified findings live in the course repo.</div>
+  </div>
+</footer>

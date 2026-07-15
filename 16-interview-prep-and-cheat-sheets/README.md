@@ -18,6 +18,9 @@ something actually run and verified earlier in this course, not generic intervie
 3. [Interview Questions](03-interview-questions.md) — organized fundamentals → intermediate →
    advanced → system-design-style, each answer grounded in a specific verified fact from this
    course rather than a textbook definition.
+4. [`field-notes.html`](field-notes.html) — a single-page, designed cheat sheet condensing #1 and
+   #2 into one visual reference: a 14-card grid (one per module) plus the top 18 gotchas grouped
+   by theme. Open it directly in a browser — self-contained, no server needed, works offline.
 
 ## How to use this module
 
