@@ -151,10 +151,13 @@ GitHub renders these as interactive-looking checkboxes on the repo page.
 - [ ] Quiz: scored honestly, reviewed wrong answers
 
 ## Module 15 — Capstone Projects
-- [ ] _(module not built yet)_
+- [ ] Capstone 1: Retail Sales ETL (verified medallion + quality gate against orders.csv)
+- [ ] Capstone 2: Streaming Order Monitor (verified streaming + dead-letter + checkpoint restart)
+- [ ] Capstone 3: Customer 360 Lakehouse (verified SCD2 point-in-time join + idempotent MERGE)
+- [ ] Quiz: scored honestly, reviewed wrong answers
 
 ## Module 16 — Interview Prep & Cheat Sheets
 - [ ] _(module not built yet)_
 
 ---
-*Last updated: 2026-07-15 — Modules 00–14 built.*
+*Last updated: 2026-07-15 — Modules 00–15 built.*

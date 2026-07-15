@@ -43,4 +43,4 @@ sections are conceptual guidance rather than verified execution. Where that's th
 out explicitly rather than dressed up as something it isn't.
 
 ---
-**Next:** [Module 15 — Capstone Projects](../15-capstone-projects/) *(not yet built)*
+**Next:** [Module 15 — Capstone Projects](../15-capstone-projects/)
